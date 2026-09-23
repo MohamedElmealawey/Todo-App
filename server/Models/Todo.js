@@ -1,10 +1,16 @@
 const mongoose=require("mongoose")
 
 const TodoSchema=new mongoose.Schema({
-    id:String,
-    task:String,
-    completed:Boolean,
-})
+    task:{
+        type:String,
+        required:true
+    },
+    completed:{
+        type:Boolean,
+        required:true,
+        default:false
+    },
+},{timestamps:true})
 
 const TodoModel=mongoose.model("Tasks",TodoSchema);
 

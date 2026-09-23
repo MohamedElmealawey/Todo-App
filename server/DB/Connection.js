@@ -1,5 +1,13 @@
 const mongoose=require('mongoose');
 
-module.exports=()=>mongoose.connect("mongodb://127.0.0.1:27017/Todolist").then((res)=>{
-    console.log("connected to database")
-})
+exports.connectDB=()=>{
+    try{
+        mongoose.connect(process.env.DB_URL).then((res)=>{
+            console.log("connected to database")
+        }).catch((e)=>{
+            console.log(e.message);
+        })
+    }catch(e){
+        console.log(e.message);
+    }
+}

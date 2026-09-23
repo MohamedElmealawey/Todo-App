@@ -1,16 +1,19 @@
 const experss=require('express');
 const cors=require('cors');
-const connection=require("./DB/Connection");
 const todoRoutes = require('./Routes/TodoRoutes');
+const { connectDB } = require('./DB/Connection');
+require('dotenv').config()
 
 const app=experss();
 app.use(cors())
 app.use(experss.json())
 
+const PORT=process.env.PORT || 8000;
+
 app.use("/",todoRoutes);
 
 
-connection();
-app.listen("8000",()=>{
-    console.log("server is Running")
+connectDB();
+app.listen(PORT,()=>{
+    console.log("server is Running at port "+PORT)
 })
