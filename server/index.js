@@ -13,7 +13,7 @@ const PORT=process.env.PORT || 8000;
 app.use("/",todoRoutes);
 
 app.get("/",(req,res)=>{
-    return res.json({message:"Api working"})
+    res.send("Api is working")
 })
 
 
